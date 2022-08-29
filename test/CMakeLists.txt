@@ -20,6 +20,7 @@ add_link_options(${RT_LINK_OPTIONS})
 
 set(RT_UNIT_TESTS
         unit/geometry
+        unit/reader
         )
 link_libraries(lib${PROJECT_NAME})
 set(RT_TEST_SOURCES ${RT_UNIT_TESTS})
