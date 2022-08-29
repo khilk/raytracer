@@ -1,5 +1,6 @@
 add_library(libraytracer geometry/vector.cpp geometry/geometry.cpp geometry/vector.hpp geometry/geometry.hpp geometry/ray.hpp geometry/sphere.hpp geometry/triangle.hpp
-        geometry/intersection.hpp)
+        geometry/intersection.hpp scene/light.hpp scene/material.hpp
+        scene/object.hpp scene/reader.hpp scene/reader.cpp scene/scene.hpp)
 
 find_package(PNG REQUIRED)
 if (PNG_FOUND)
