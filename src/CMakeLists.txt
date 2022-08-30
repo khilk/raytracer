@@ -1,6 +1,9 @@
 add_library(libraytracer geometry/vector.cpp geometry/geometry.cpp geometry/vector.hpp geometry/geometry.hpp geometry/ray.hpp geometry/sphere.hpp geometry/triangle.hpp
         geometry/intersection.hpp scene/light.hpp scene/material.hpp
-        scene/object.hpp scene/reader.hpp scene/reader.cpp scene/scene.hpp)
+        scene/object.hpp scene/reader.hpp scene/reader.cpp scene/scene.hpp
+        raytracer/matrix.cpp raytracer/matrix.hpp raytracer/raytracer.hpp raytracer/render_options.hpp
+        raytracer/camera_options.hpp raytracer/image.hpp
+        raytracer/raytracer.cpp raytracer/image.cpp)
 
 find_package(PNG REQUIRED)
 if (PNG_FOUND)
