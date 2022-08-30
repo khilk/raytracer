@@ -13,16 +13,27 @@ if (NOT GTEST_FOUND)
     set(GTEST_BOTH_LIBRARIES GTest::gtest GTest::gtest_main)
 endif ()
 
+
 link_libraries(GTest::gtest GTest::gtest_main)
 
 add_compile_options(${RT_COMPILE_OPTIONS})
 add_link_options(${RT_LINK_OPTIONS})
 
+add_library(lib_test_utils utils/diff.cpp utils/diff.hpp)
+
+
+target_include_directories(lib_test_utils
+        PRIVATE ${RT_SOURCE_DIR}/src
+        )
+
 set(RT_UNIT_TESTS
         unit/geometry
         unit/reader
+        unit/raytracer
+        unit/raytracer_debug
         )
 link_libraries(lib${PROJECT_NAME})
+link_libraries(lib_test_utils)
 set(RT_TEST_SOURCES ${RT_UNIT_TESTS})
 
 foreach (TEST_SOURCE ${RT_TEST_SOURCES})
@@ -34,6 +45,7 @@ foreach (TEST_SOURCE ${RT_TEST_SOURCES})
     target_include_directories(${TEST_NAME}
             PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}
             PRIVATE ${RT_SOURCE_DIR}/src
+            PRIVATE ${RT_SOURCE_DIR}/test
             )
     add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
 endforeach ()
