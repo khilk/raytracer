@@ -23,11 +23,9 @@ void CheckImage(const std::string& obj_filename, const std::string& result_filen
 TEST(ShadingParts, Raytracer) {
   CameraOptions camera_opts(640, 480);
   RenderOptions render_opts{1, RenderMode::kDepth};
-  CheckImage("shading_parts_d/scene.obj", "shading_parts_d/depth.png", camera_opts, render_opts,
-             "/home/daria/Shading.png");
+  CheckImage("shading_parts_d/scene.obj", "shading_parts_d/depth.png", camera_opts, render_opts);
   render_opts.mode = RenderMode::kNormal;
-  CheckImage("shading_parts_d/scene.obj", "shading_parts_d/normal.png", camera_opts, render_opts,
-             "/home/daria/Shading_n.png");
+  CheckImage("shading_parts_d/scene.obj", "shading_parts_d/normal.png", camera_opts, render_opts);
 }
 
 TEST(Triangle, Raytracer) {
@@ -35,9 +33,9 @@ TEST(Triangle, Raytracer) {
   camera_opts.look_from = std::array<double, 3>{0.0, 2.0, 0.0};
   camera_opts.look_to = std::array<double, 3>{0.0, 0.0, 0.0};
   RenderOptions render_opts{1, RenderMode::kDepth};
-  CheckImage("triangle_d/scene.obj", "triangle_d/depth.png", camera_opts, render_opts, "/home/daria/triangle.png");
+  CheckImage("triangle_d/scene.obj", "triangle_d/depth.png", camera_opts, render_opts);
   render_opts.mode = RenderMode::kNormal;
-  CheckImage("triangle_d/scene.obj", "triangle_d/normal.png", camera_opts, render_opts, "/home/daria/triangle_n.png");
+  CheckImage("triangle_d/scene.obj", "triangle_d/normal.png", camera_opts, render_opts);
 }
 
 TEST(Triangle2, Raytracer) {
@@ -45,7 +43,7 @@ TEST(Triangle2, Raytracer) {
   camera_opts.look_from = std::array<double, 3>{0.0, -2.0, 0.0};
   camera_opts.look_to = std::array<double, 3>{0.0, 0.0, 0.0};
   RenderOptions render_opts{1, RenderMode::kDepth};
-  CheckImage("triangle_d/scene.obj", "triangle_d/depth2.png", camera_opts, render_opts, "/home/daria/triangle2.png");
+  CheckImage("triangle_d/scene.obj", "triangle_d/depth2.png", camera_opts, render_opts);
   render_opts.mode = RenderMode::kNormal;
   CheckImage("triangle_d/scene.obj", "triangle_d/normal2.png", camera_opts, render_opts);
 }
@@ -81,7 +79,7 @@ TEST(Deer, Raytracer) {
   camera_opts.look_from = std::array<double, 3>{100, 200, 150};
   camera_opts.look_to = std::array<double, 3>{0.0, 100.0, 0.0};
   RenderOptions render_opts{1, RenderMode::kDepth};
-  CheckImage("deer_d/CERF_Free.obj", "deer_d/depth.png", camera_opts, render_opts, "/home/daria/deer.png");
+  CheckImage("deer_d/CERF_Free.obj", "deer_d/depth.png", camera_opts, render_opts);
   render_opts.mode = RenderMode::kNormal;
-  CheckImage("deer_d/CERF_Free.obj", "deer_d/normal.png", camera_opts, render_opts, "/home/daria/deer_n.png");
+  CheckImage("deer_d/CERF_Free.obj", "deer_d/normal.png", camera_opts, render_opts);
 }

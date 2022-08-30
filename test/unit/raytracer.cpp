@@ -1,13 +1,13 @@
-#include <gtest/gtest.h>
-#include <cmath>
-#include <string>
-#include <optional>
-
 #include <raytracer/camera_options.hpp>
+#include <raytracer/raytracer.hpp>
 #include <raytracer/render_options.hpp>
 #include <utils/diff.hpp>
-#include <raytracer/raytracer.hpp>
 
+#include <cmath>
+#include <optional>
+#include <string>
+
+#include <gtest/gtest.h>
 
 void CheckImage(const std::string& obj_filename, const std::string& result_filename,
                 const CameraOptions& camera_options, const RenderOptions& render_options,
@@ -48,12 +48,10 @@ TEST(ClassicBox, Raytracer) {
   camera_opts.look_from = std::array<double, 3>{-0.5, 1.5, 0.98};
   camera_opts.look_to = std::array<double, 3>{0.0, 1.0, 0.0};
   RenderOptions render_opts{4};
-  CheckImage("classic_box/CornellBox-Original.obj", "classic_box/first.png", camera_opts,
-             render_opts);
+  CheckImage("classic_box/CornellBox-Original.obj", "classic_box/first.png", camera_opts, render_opts);
   camera_opts.look_from = std::array<double, 3>{-0.9, 1.9, -1};
   camera_opts.look_to = std::array<double, 3>{0.0, 0.0, 0};
-  CheckImage("classic_box/CornellBox-Original.obj", "classic_box/second.png", camera_opts,
-             render_opts);
+  CheckImage("classic_box/CornellBox-Original.obj", "classic_box/second.png", camera_opts, render_opts);
 }
 
 TEST(Mirrors, Raytracer) {
@@ -61,8 +59,7 @@ TEST(Mirrors, Raytracer) {
   camera_opts.look_from = std::array<double, 3>{2, 1.5, -0.1};
   camera_opts.look_to = std::array<double, 3>{1, 1.2, -2.8};
   RenderOptions render_opts{9};
-  CheckImage("mirrors/scene.obj", "mirrors/result.png", camera_opts,
-             render_opts);
+  CheckImage("mirrors/scene.obj", "mirrors/result.png", camera_opts, render_opts);
 }
 
 TEST(BoxWithSpheres, Raytracer) {
@@ -70,18 +67,15 @@ TEST(BoxWithSpheres, Raytracer) {
   camera_opts.look_from = std::array<double, 3>{0.0, 0.7, 1.75};
   camera_opts.look_to = std::array<double, 3>{0.0, 0.7, 0.0};
   RenderOptions render_opts{4};
-  CheckImage("box/cube.obj", "box/cube.png",
-             camera_opts, render_opts);
+  CheckImage("box/cube.obj", "box/cube.png", camera_opts, render_opts);
 }
-
 
 TEST(DistortedBox, Raytracer) {
   CameraOptions camera_opts(500, 500);
   camera_opts.look_from = std::array<double, 3>{-0.5, 1.5, 1.98};
   camera_opts.look_to = std::array<double, 3>{0.0, 1.0, 0.0};
   RenderOptions render_opts{4};
-  CheckImage("distorted_box/CornellBox-Original.obj", "distorted_box/result.png", camera_opts,
-             render_opts);
+  CheckImage("distorted_box/CornellBox-Original.obj", "distorted_box/result.png", camera_opts, render_opts);
 }
 
 TEST(Deer, Raytracer) {
